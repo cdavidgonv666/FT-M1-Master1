@@ -10,32 +10,32 @@ Determiná que será impreso en la consola, sin ejecutar el código.
 > Investiga cuál es la diferencia entre declarar una variable con `var` y directamente asignarle un valor.
 
 ```javascript
-// Si comenzamos la variable con var estamos iniciando la variable para que se ejecute globalmente y la podamos usar en cualquier línea de código posterior, si la asignamos le estamos cambiando el valor y lo podemos hacer dentro de una parte especifica del código.
+// la diferencia entre var y asignarle el valor directamente a la variable es que la podemos volver a utilizar nuevamente con el valor asignado inicial es decir en un global scope mientras que si solo le asignamos un valor vamos a poder utilizarlo desde ese scope unícamente.
 x = 1;
 var a = 5;
 var b = 10;
 var c = function(a, b, c) {
   var x = 10;
-  console.log(x);
-  console.log(a);
+  console.log(x);//10
+  console.log(a);//8
   var f = function(a, b, c) {
     b = a;
-    console.log(b);
+    console.log(b);//8
     b = c;
     var x = 5;
   }
   f(a,b,c);
-  console.log(b);
+  console.log(b);//9
 }
-c(8,9,10);
-console.log(b);
-console.log(x);
+c(8,9,10);//10,8,8,9
+console.log(b);//10
+console.log(x);//1
 ```
 
 ```javascript
-console.log(bar);
-console.log(baz);
-foo();
+console.log(bar);//undefined
+console.log(baz);//error is not defined
+foo();//Hola!
 function foo() { console.log('Hola!'); }
 var bar = 1;
 baz = 2;
@@ -46,19 +46,19 @@ var instructor = "Tony";
 if(true) {
     var instructor = "Franco";
 }
-console.log(instructor);
+console.log(instructor);//Franco
 ```
 
 ```javascript
 var instructor = "Tony";
-console.log(instructor);
+console.log(instructor);//Tony
 (function() {
    if(true) {
       var instructor = "Franco";
-      console.log(instructor);
+      console.log(instructor);//Franco
    }
 })();
-console.log(instructor);
+console.log(instructor);//Tony
 ```
 
 ```javascript
@@ -67,11 +67,11 @@ let pm = "Franco";
 if (true) {
     var instructor = "The Flash";
     let pm = "Reverse Flash";
-    console.log(instructor);
-    console.log(pm);
+    console.log(instructor);//The Flash
+    console.log(pm);//Reverse Flash
 }
-console.log(instructor);
-console.log(pm);
+console.log(instructor);//The Flash
+console.log(pm);//Franco
 ```
 ### Coerción de Datos
 
@@ -114,7 +114,7 @@ function test() {
    }
 }
 
-test();//output 2
+test();//output 2 porque el útlimo scope lo que hace es retornar 2 con la función foo()
 ```
 
 Y el de este código? :
@@ -130,7 +130,7 @@ function getFood(food) {
     return snack;
 }
 
-getFood(false);//'Meow Mix'
+getFood(false);//Meow Mix porque le estamos dando false con la función getFood y el ciclo if dice que si getFood es true snack = 'Friskies' pero como es false snack estaba declarado con Meow Mix.
 ```
 
 
@@ -150,11 +150,11 @@ var obj = {
    }
 };
 
-console.log(obj.prop.getFullname());//Aurelio De Rosa
+console.log(obj.prop.getFullname());//Aurelio De Rosa porque estamos llamando el obj y prop donde el fullname es === Aurelio De Rosa si le indicamos solo console.log(fullname) daría juan Perez.
 
 var test = obj.prop.getFullname;
 
-console.log(test());//undefined
+console.log(test());//undefined no está definido el obj ni la prop.
 ```
 
 ### Event loop

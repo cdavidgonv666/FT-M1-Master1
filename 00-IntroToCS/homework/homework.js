@@ -2,10 +2,10 @@
 function BinarioADecimal(num) {
   // tu codigo aca
   num = num.toString();
-  let decimal = +0;
-  let cantbit = +1;
+  let decimal = 0;
+  let cantbit = 1;
   for(let i = 0; i < num.length; i++) {
-      let nNum = +(num[num.length - i - 1]);
+      let nNum = (num[num.length - i - 1]);
       if(nNum === 1) {
           decimal += cantbit;
       }

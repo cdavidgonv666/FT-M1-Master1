@@ -11,6 +11,18 @@
 // search: Busca un valor dentro de la lista. Puede recibir un valor o una función. Si no hubiera resultados, devuelve null.
 
 function LinkedList() {
+  class LinkedList {
+    constructor() {
+       this.head = null;
+       this.length = 0;
+     }
+ }
+ LinkedList.prototype.Node = class {
+    constructor(data) {
+       this.data = data; 
+       this.next = null;
+    }
+ }
 
 }
 
@@ -31,8 +43,17 @@ function Node(value){
 //    - Retornar dicho valor.
 
 function HashTable() {
+  this.numBuckets = 35;
+  this.buckets
 
 }
+HashTable.prototype.hash = function(key){
+  let suma = 0;
+  for (let i = 0;i<key.length ;i++){
+    suma += key.charCodeAt(i);
+  }
+  return suma % this.numBuckets;
+};
 
 
 // No modifiquen nada debajo de esta linea
